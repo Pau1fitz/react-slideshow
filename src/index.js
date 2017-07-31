@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slideshow from './Slideshow';
-import './App.css';
+import Slideshow from './components/Slideshow';
 
 const slides = [
 	'images/one.jpg',
@@ -11,6 +10,6 @@ const slides = [
 ];
 
 ReactDOM.render(
-	<Slideshow showArrows slides={slides} />,
+	<Slideshow showIndex showArrows slideInterval={4000} slides={slides} />,
 	document.getElementById('root')
 );

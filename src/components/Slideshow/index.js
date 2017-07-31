@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import Arrows from '../Arrows';
+import './Slideshow.css';
 
 class Slideshow extends Component {
 
@@ -7,8 +8,8 @@ class Slideshow extends Component {
 		super(props);
 		this.state = {
 			currentSlide: 0,
-			slideTimer: props.slideInterval ? props.slideInterval : 10000000
-		}
+			slideTimer: props.slideInterval ? props.slideInterval : 2000
+		};
 	}
 
 	componentDidMount() {
@@ -26,7 +27,6 @@ class Slideshow extends Component {
 		clearInterval(this.state.intervalId);
 	}
 
-
 	autoSlideshow = () => {
 		this.setState({
 			currentSlide: (this.state.currentSlide + 1) % this.props.slides.length
@@ -43,45 +43,44 @@ class Slideshow extends Component {
 		this.setState({
 			currentSlide: (this.state.currentSlide + 1) % this.props.slides.length
 		});
-
-
 	}
 
 	decreaseCount = () => {
-
 		this.restartSlideshow();
-		let currentSlide = this.state.currentSlide === 0 ? this.props.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
+		let currentSlide;
+		currentSlide = this.state.currentSlide === 0 ? this.props.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
 		this.setState({
 			currentSlide
 		});
-
-
 	}
 
 	render() {
 
-		console.log(this.state)
+		const { slides, showIndex } = this.props;
 
-		let slides = this.props.slides.map((slide, i) => {
+		let slideShowSlides = slides.map((slide, i) => {
 			return <li className = {this.state.currentSlide === i ? "slideshow-image slide showing" : "slideshow-image slide"} key={i} style={{backgroundImage: `url(${slide})`}}></li>
-		})
+		});
 
 		return (
 
 			<div className="slideshow-container">
 				<ul className="slides">
-					{slides}
+					{slideShowSlides}
 				</ul>
+
 				{this.props.showArrows &&  (
-					<div>
-						<span onClick={this.decreaseCount} className="arrow btn-arrow btn-arrow-left"></span>
-						<span onClick={this.increaseCount} className="arrow btn-arrow btn-arrow-right"></span>
+					<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
+				)}
+
+				{showIndex && (
+					<div className="show-index">
+						<p>{`${this.state.currentSlide + 1} / ${slides.length}`}</p>
 					</div>
 				)}
 			</div>
 		);
 	}
 }
-
 
 export default Slideshow;
