@@ -1,8 +1,8 @@
 Slideshow
 ---
-React Slideshow component
+Full screen React Slideshow component
 
-Full screen slideshow component.
+![Alt text](/react-slideshow.png?raw=true "Optional Title")
 
 To run clone the repo and then run `npm install`.
 
