@@ -1,0 +1,3 @@
+Slideshow
+---
+React Slideshow component
