@@ -10,6 +10,11 @@ const slides = [
 ];
 
 ReactDOM.render(
-	<Slideshow showIndex showArrows slideInterval={4000} slides={slides} />,
+	<Slideshow
+		showIndex
+		showArrows
+		slideInterval={4000}
+		slides={slides}
+	/>,
 	document.getElementById('root')
 );
