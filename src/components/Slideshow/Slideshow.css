@@ -2,7 +2,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	background: #978675;
+	background: #000;
 }
 
 .slideshow-container {
@@ -21,8 +21,8 @@ body {
 
 .slide {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 	width: 100%;
 	height: 100%;
 	opacity: 0;
@@ -32,15 +32,88 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	-webkit-transition: opacity 1s;
-	-moz-transition: opacity 1s;
-	-o-transition: opacity 1s;
-	transition: opacity 1s;
 }
 
-.showing {
+.showing-fade {
 	opacity: 1;
 	z-index: 2;
+	animation-duration: 1s;
+	animation-name: slide-fade;
+}
+
+@keyframes slide-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.showing-right {
+	opacity: 1;
+	animation-duration: 1s;
+  animation-name: slide-right;
+}
+
+
+@keyframes slide-right {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.showing-left {
+	opacity: 1;
+	animation-duration: 1s;
+  animation-name: slide-left;
+}
+
+@keyframes slide-left {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.showing-top {
+	opacity: 1;
+	animation-duration: 1s;
+  animation-name: slide-top;
+}
+
+@keyframes slide-top {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+.showing-bottom {
+	opacity: 1;
+	animation-duration: 1s;
+  animation-name: slide-bottom;
+}
+
+@keyframes slide-bottom {
+  from {
+    top: -100%;
+  }
+
+  to {
+    top: 0;
+  }
 }
 
 .show-index {
@@ -50,5 +123,5 @@ body {
 	z-index: 100;
 	left: 50%;
 	font-size: 28px;
-	font-family: arial;
+	font-family: 'Slabo 27px', serif;;
 }

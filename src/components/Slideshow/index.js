@@ -56,29 +56,30 @@ class Slideshow extends Component {
 
 	render() {
 
-		const { slides, showIndex } = this.props;
+		const { slides, showIndex, effect } = this.props;
+
+		let slideEffect = effect === undefined ? 'fade' : effect;
 
 		let slideShowSlides = slides.map((slide, i) => {
-			return <li className = {this.state.currentSlide === i ? "slideshow-image slide showing" : "slideshow-image slide"} key={i} style={{backgroundImage: `url(${slide})`}}></li>
+			return <li className = {`slide ${effect} ${(this.state.currentSlide === i ? "showing-"  + slideEffect  : "")}`} key={i} style={{backgroundImage: `url(${slide})`}}></li>
 		});
 
 		return (
+				<div className="slideshow-container">
+					<ul className="slides">
+						{slideShowSlides}
+					</ul>
 
-			<div className="slideshow-container">
-				<ul className="slides">
-					{slideShowSlides}
-				</ul>
+					{this.props.showArrows &&  (
+						<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
+					)}
 
-				{this.props.showArrows &&  (
-					<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
-				)}
-
-				{showIndex && (
-					<div className="show-index">
-						<p>{`${this.state.currentSlide + 1} / ${slides.length}`}</p>
-					</div>
-				)}
-			</div>
+					{showIndex && (
+						<div className="show-index">
+							<p>{`${this.state.currentSlide + 1} / ${slides.length}`}</p>
+						</div>
+					)}
+				</div>
 		);
 	}
 }

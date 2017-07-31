@@ -13,6 +13,7 @@ ReactDOM.render(
 	<Slideshow
 		showIndex
 		showArrows
+		effect={"fade"}
 		slideInterval={4000}
 		slides={slides}
 	/>,
