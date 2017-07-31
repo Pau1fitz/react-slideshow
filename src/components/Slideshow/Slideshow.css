@@ -123,5 +123,16 @@ body {
 	z-index: 100;
 	left: 50%;
 	font-size: 28px;
-	font-family: 'Slabo 27px', serif;;
+	font-family: 'Slabo 27px', serif;
+}
+
+
+.demo-controls {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	color: #fff;
+	font-family: 'Slabo 27px', serif;
 }

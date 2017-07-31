@@ -8,7 +8,12 @@ class Slideshow extends Component {
 		super(props);
 		this.state = {
 			currentSlide: 0,
-			slideTimer: props.slideInterval ? props.slideInterval : 2000
+			slideInterval: props.slideInterval ? props.slideInterval : 2000,
+			showIndex: props.showIndex ? props.showIndex : false,
+			showArrows: props.showArrows ? props.showArrows : false,
+			effect: props.effect ? props.effect : false,
+			slides: props.slides ? props.slides : [],
+
 		};
 	}
 
@@ -17,7 +22,7 @@ class Slideshow extends Component {
 	}
 
 	runSlideShow = () => {
-		let intervalId = setInterval(this.autoSlideshow, this.state.slideTimer);
+		let intervalId = setInterval(this.autoSlideshow, this.state.slideInterval);
 		this.setState({
 			intervalId
 		});
@@ -54,9 +59,33 @@ class Slideshow extends Component {
 		});
 	}
 
+	toggleArrows = () => {
+
+	 	this.setState({
+			showArrows: !this.state.showArrows
+		})
+
+ 	}
+
+	toggleIndex = () => {
+
+		this.setState({
+			showIndex: !this.state.showIndex
+		})
+
+	}
+
+	changeEffect = (e) => {
+
+		this.setState({
+				effect: e.target.value
+		});
+
+	}
+
 	render() {
 
-		const { slides, showIndex, effect } = this.props;
+		const { slides, showIndex, effect, showArrows } = this.state;
 
 		let slideEffect = effect === undefined ? 'fade' : effect;
 
@@ -65,12 +94,39 @@ class Slideshow extends Component {
 		});
 
 		return (
+
+			<div className="demo">
+
+				<div className="demo-controls">
+
+					<div onChange={this.toggleArrows} className="test">
+						<span>Toggle Arrows</span>
+						<input type="checkbox"/>
+					</div>
+
+					<div onChange={this.toggleIndex} className="test">
+						<span>Toggle Index</span>
+						<input type="checkbox"/>
+					</div>
+
+					<select onChange={this.changeEffect} value={this.state.value}>
+						<option value="fade">Fade</option>
+						<option value="left">Left</option>
+						<option value="right">Right</option>
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+				 </select>
+
+				</div>
+
+
+
 				<div className="slideshow-container">
 					<ul className="slides">
 						{slideShowSlides}
 					</ul>
 
-					{this.props.showArrows &&  (
+					{showArrows &&  (
 						<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
 					)}
 
@@ -80,6 +136,10 @@ class Slideshow extends Component {
 						</div>
 					)}
 				</div>
+
+
+
+			</div>
 		);
 	}
 }
