@@ -23,10 +23,10 @@ You can pass the following props to the component.
 ```js
 
 <Slideshow
-	showIndex
-	showArrows
-	slideInterval={2000}
-	slides=['1.jpg', '2.jpg']
+   showIndex
+   showArrows
+   slideInterval={2000}
+   slides=['1.jpg', '2.jpg']
 />
 
 ```
