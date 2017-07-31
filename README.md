@@ -1,6 +1,7 @@
 # React Slideshow
----
+
 Full screen React Slideshow component
+---
 
 To run clone the repo and then run `npm install`.
 
