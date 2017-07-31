@@ -1,8 +1,6 @@
-Slideshow
+# React Slideshow
 ---
 Full screen React Slideshow component
-
-![Alt text](/react-slideshow.png?raw=true "Optional Title")
 
 To run clone the repo and then run `npm install`.
 
@@ -30,3 +28,5 @@ You can pass the following props to the component.
 />
 
 ```
+
+![Alt text](/react-slideshow.png?raw=true "Optional Title")
