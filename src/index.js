@@ -14,12 +14,11 @@ ReactDOM.render(
 		showIndex
 		showArrows
 		autoplay
-		effect={"fade"}
+		effect={'fade'}
 		slideInterval={4000}
 		slides={slides}
 		height={'100%'}
-		width={'100%'}
-
-	/>,
+		width={'100%'}>
+	</Slideshow>,
 	document.getElementById('root')
 );

@@ -9,12 +9,12 @@ class Slideshow extends Component {
 		this.state = {
 			currentSlide: 0,
 			slideInterval: props.slideInterval || 2000,
-			showIndex: props.showIndex || false,
-			showArrows: props.showArrows || false,
-			effect: props.effect || false,
-			slides: props.slides || [],
-			autoplay: props.autoplay || false,
-			enableKeyboard: props.enableKeyboard || true
+			showIndex: props.showIndex || true,
+			showArrows: props.showArrows || true,
+			effect: props.effect || true,
+			autoplay: props.autoplay || true,
+			enableKeyboard: props.enableKeyboard || true,
+			slides: props.slides.length > 0 ? props.slides : props.children
 		};
 	}
 
@@ -25,6 +25,10 @@ class Slideshow extends Component {
 
 		if(this.state.enableKeyboard)
 			document.addEventListener('keydown', this.handleKeyboard);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.state.intervalId);
 	}
 
 	handleKeyboard = (e) => {
@@ -39,13 +43,9 @@ class Slideshow extends Component {
 		});
 	}
 
-	componentWillUnmount() {
-		clearInterval(this.state.intervalId);
-	}
-
 	autoSlideshow = () => {
 		this.setState({
-			currentSlide: (this.state.currentSlide + 1) % this.props.slides.length
+			currentSlide: (this.state.currentSlide + 1) % this.state.slides.length
 		});
 	}
 
@@ -58,7 +58,7 @@ class Slideshow extends Component {
 
 		this.state.autoplay ? this.restartSlideshow() : null;
 		this.setState({
-			currentSlide: (this.state.currentSlide + 1) % this.props.slides.length
+			currentSlide: (this.state.currentSlide + 1) % this.state.slides.length
 		});
 	}
 
@@ -66,7 +66,7 @@ class Slideshow extends Component {
 		this.state.autoplay ? this.restartSlideshow() : null;
 
 		let currentSlide;
-		currentSlide = this.state.currentSlide === 0 ? this.props.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
+		currentSlide = this.state.currentSlide === 0 ? this.state.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
 		this.setState({
 			currentSlide
 		});
@@ -108,10 +108,17 @@ class Slideshow extends Component {
 		const { slides, showIndex, effect, showArrows } = this.state;
 
 		let slideEffect = effect === undefined ? 'fade' : effect;
+		let slideShowSlides;
 
-		let slideShowSlides = slides.map((slide, i) => {
-			return <li className = {`slide ${effect} ${(this.state.currentSlide === i ? "showing-"  + slideEffect  : "")}`} key={i} style={{backgroundImage: `url(${slide})`}}></li>
-		});
+		if(!this.props.children){
+			slideShowSlides = slides.map((slide, i) => {
+				return <li className = {`slide ${effect} ${(this.state.currentSlide === i ? "showing-"  + slideEffect  : "")}`} key={i} style={{backgroundImage: `url(${slide})`}}></li>
+			});
+		} else {
+			slideShowSlides = slides.map((slide, i) => {
+				return <li className = {`slide ${effect} ${(this.state.currentSlide === i ? "showing-"  + slideEffect  : "")}`} key={i}>{slide}</li>
+			});
+		}
 
 		return (
 
