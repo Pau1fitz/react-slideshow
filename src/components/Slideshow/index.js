@@ -29,12 +29,12 @@ class Slideshow extends Component {
 
 	componentWillUnmount() {
 		clearInterval(this.state.intervalId);
+		document.removeEventListener('keydown', this.handleKeyboard);
 	}
 
 	handleKeyboard = (e) => {
 		e.keyCode === 37 ? this.decreaseCount() : e.keyCode === 39 ? this.increaseCount() : null;
 	}
-
 
 	runSlideShow = () => {
 		let intervalId = setInterval(this.autoSlideshow, this.state.slideInterval);
@@ -84,6 +84,23 @@ class Slideshow extends Component {
 		});
 	}
 
+	toggleKeyboard = () => {
+
+		let handleKeyboard = () => {
+			if(this.state.enableKeyboard) {
+				document.addEventListener('keydown', this.handleKeyboard);
+			} else {
+				document.removeEventListener('keydown', this.handleKeyboard);
+			}
+		}
+
+		this.setState({
+			enableKeyboard: !this.state.enableKeyboard
+		}, () => {
+			handleKeyboard();
+		});
+	}
+
 	changeEffect = (e) => {
 		this.setState({
 			effect: e.target.value
@@ -105,7 +122,7 @@ class Slideshow extends Component {
 
 	render() {
 
-		const { slides, showIndex, effect, showArrows } = this.state;
+		const { slides, showIndex, effect, showArrows, enableKeyboard } = this.state;
 
 		let slideEffect = effect === undefined ? 'fade' : effect;
 		let slideShowSlides;
@@ -139,9 +156,15 @@ class Slideshow extends Component {
 					</div>
 
 					<div className="demo-control" onChange={this.toggleAutoplay}>
-						<span>Toggle Autoplay</span>
+						<span>Autoplay</span>
 						<input type="checkbox" id="check-autoplay" />
 						<label htmlFor="check-autoplay"><div className="handle"></div></label>
+					</div>
+
+					<div className="demo-control" onChange={this.toggleKeyboard}>
+						<span>Keyboard Control</span>
+						<input type="checkbox" id="check-keyboard" />
+						<label htmlFor="check-keyboard"><div className="handle"></div></label>
 					</div>
 
 					<div className="demo-control">
