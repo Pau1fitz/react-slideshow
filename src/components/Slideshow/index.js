@@ -8,17 +8,20 @@ class Slideshow extends Component {
 		super(props);
 		this.state = {
 			currentSlide: 0,
-			slideInterval: props.slideInterval ? props.slideInterval : 2000,
-			showIndex: props.showIndex ? props.showIndex : false,
-			showArrows: props.showArrows ? props.showArrows : false,
-			effect: props.effect ? props.effect : false,
-			slides: props.slides ? props.slides : [],
+			slideInterval: props.slideInterval || 2000,
+			showIndex: props.showIndex || false,
+			showArrows: props.showArrows || false,
+			effect: props.effect || false,
+			slides: props.slides || [],
+			autoplay: props.autoplay || false
 
 		};
 	}
 
 	componentDidMount() {
-		this.runSlideShow();
+
+		if(this.state.autoplay)
+			this.runSlideShow();
 	}
 
 	runSlideShow = () => {
@@ -60,27 +63,34 @@ class Slideshow extends Component {
 	}
 
 	toggleArrows = () => {
-
 	 	this.setState({
 			showArrows: !this.state.showArrows
-		})
-
+		});
  	}
 
 	toggleIndex = () => {
-
 		this.setState({
 			showIndex: !this.state.showIndex
-		})
-
+		});
 	}
 
 	changeEffect = (e) => {
+		this.setState({
+			effect: e.target.value
+		});
+	}
+
+	toggleAutoplay = () => {
+
+		let handleAutoplay = () => {
+			this.state.autoplay ? this.restartSlideshow() : clearInterval(this.state.intervalId);
+		}
 
 		this.setState({
-				effect: e.target.value
+			autoplay: !this.state.autoplay
+		}, () => {
+			handleAutoplay();
 		});
-
 	}
 
 	render() {
@@ -99,13 +109,18 @@ class Slideshow extends Component {
 
 				<div className="demo-controls">
 
-					<div onChange={this.toggleArrows} className="test">
+					<div onChange={this.toggleArrows}>
 						<span>Toggle Arrows</span>
 						<input type="checkbox"/>
 					</div>
 
-					<div onChange={this.toggleIndex} className="test">
+					<div onChange={this.toggleIndex}>
 						<span>Toggle Index</span>
+						<input type="checkbox"/>
+					</div>
+
+					<div onChange={this.toggleAutoplay}>
+						<span>Toggle Autoplay</span>
 						<input type="checkbox"/>
 					</div>
 
@@ -120,22 +135,24 @@ class Slideshow extends Component {
 				</div>
 
 
+				<div style={{position:'absolute', height: this.props.height || '100%', width: this.props.width || '100%'}}>
+					<div className="slideshow-container">
+						<ul className="slides">
+							{slideShowSlides}
+						</ul>
 
-				<div className="slideshow-container">
-					<ul className="slides">
-						{slideShowSlides}
-					</ul>
+						{showArrows &&  (
+							<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
+						)}
 
-					{showArrows &&  (
-						<Arrows decreaseCount={this.decreaseCount} increaseCount={this.increaseCount}/>
-					)}
-
-					{showIndex && (
-						<div className="show-index">
-							<p>{`${this.state.currentSlide + 1} / ${slides.length}`}</p>
-						</div>
-					)}
+						{showIndex && (
+							<div className="show-index">
+								<p>{`${this.state.currentSlide + 1} / ${slides.length}`}</p>
+							</div>
+						)}
+					</div>
 				</div>
+
 
 
 

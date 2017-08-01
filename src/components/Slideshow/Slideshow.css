@@ -17,6 +17,7 @@ body {
 	padding: 0px;
 	margin: 0px;
 	list-style-type: none;
+	overflow: hidden;
 }
 
 .slide {
@@ -42,78 +43,78 @@ body {
 }
 
 @keyframes slide-fade {
-  from {
-    opacity: 0;
-  }
+	from {
+		opacity: 0;
+	}
 
-  to {
-    opacity: 1;
-  }
+	to {
+		opacity: 1;
+	}
 }
 
 .showing-right {
 	opacity: 1;
 	animation-duration: 1s;
-  animation-name: slide-right;
+	animation-name: slide-right;
 }
 
 
 @keyframes slide-right {
-  from {
-    left: -50%;
-  }
+	from {
+		left: -50%;
+	}
 
-  to {
-    left: 0;
-  }
+	to {
+		left: 0;
+	}
 }
 
 .showing-left {
 	opacity: 1;
 	animation-duration: 1s;
-  animation-name: slide-left;
+	animation-name: slide-left;
 }
 
 @keyframes slide-left {
-  from {
-    left: 100%;
-  }
+	from {
+		left: 100%;
+	}
 
-  to {
-    left: 0;
-  }
+	to {
+		left: 0;
+	}
 }
 
 .showing-top {
 	opacity: 1;
 	animation-duration: 1s;
-  animation-name: slide-top;
+	animation-name: slide-top;
 }
 
 @keyframes slide-top {
-  from {
-    top: 100%;
-  }
+	from {
+		top: 100%;
+	}
 
-  to {
-    top: 0;
-  }
+	to {
+		top: 0;
+	}
 }
 
 .showing-bottom {
 	opacity: 1;
 	animation-duration: 1s;
-  animation-name: slide-bottom;
+	animation-name: slide-bottom;
 }
 
 @keyframes slide-bottom {
-  from {
-    top: -100%;
-  }
+	from {
+		top: -100%;
+	}
 
-  to {
-    top: 0;
-  }
+	to {
+		top: 0;
+	}
 }
 
 .show-index {
@@ -122,7 +123,7 @@ body {
 	bottom: 0;
 	z-index: 100;
 	left: 50%;
-	font-size: 28px;
+	font-size: 1em;
 	font-family: 'Slabo 27px', serif;
 }
 
