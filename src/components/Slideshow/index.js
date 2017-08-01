@@ -175,6 +175,7 @@ class Slideshow extends Component {
 							<option value="right">Right</option>
 							<option value="top">Top</option>
 							<option value="bottom">Bottom</option>
+							<option value="bounce">Bounce</option>
 						</select>
 					</div>
 
