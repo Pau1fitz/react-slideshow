@@ -47,14 +47,16 @@ class Slideshow extends Component {
 	}
 
 	increaseCount = () => {
-		this.restartSlideshow();
+
+		this.state.autoplay ? this.restartSlideshow() : null;
 		this.setState({
 			currentSlide: (this.state.currentSlide + 1) % this.props.slides.length
 		});
 	}
 
 	decreaseCount = () => {
-		this.restartSlideshow();
+		this.state.autoplay ? this.restartSlideshow() : null;
+		
 		let currentSlide;
 		currentSlide = this.state.currentSlide === 0 ? this.props.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
 		this.setState({
