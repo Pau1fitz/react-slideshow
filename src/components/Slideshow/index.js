@@ -111,35 +111,35 @@ class Slideshow extends Component {
 
 				<div className="demo-controls">
 
-
-
-
-					<div onChange={this.toggleArrows}>
+					<div className="demo-control" onChange={this.toggleArrows}>
 						<span>Toggle Arrows</span>
-
-						<input type="checkbox" id="check" />
-						<label htmlFor="check"><div className="handle"></div></label>
+						<input type="checkbox" id="check-arrows" />
+						<label htmlFor="check-arrows"><div className="handle"></div></label>
 					</div>
 
-					<div onChange={this.toggleIndex}>
+					<div className="demo-control" onChange={this.toggleIndex}>
 						<span>Toggle Index</span>
 						<input type="checkbox" id="check-index" />
 						<label htmlFor="check-index"><div className="handle"></div></label>
 					</div>
 
-					<div onChange={this.toggleAutoplay}>
+					<div className="demo-control" onChange={this.toggleAutoplay}>
 						<span>Toggle Autoplay</span>
-						<input type="checkbox"/>
+						<input type="checkbox" id="check-autoplay" />
+						<label htmlFor="check-autoplay"><div className="handle"></div></label>
 					</div>
 
-					<span>Effect</span>
-					<select onChange={this.changeEffect} value={this.state.value}>
-						<option value="fade">Fade</option>
-						<option value="left">Left</option>
-						<option value="right">Right</option>
-						<option value="top">Top</option>
-						<option value="bottom">Bottom</option>
-					</select>
+					<div className="demo-control">
+						<span>Effect</span>
+						<select className="select-effect" onChange={this.changeEffect} value={this.state.value}>
+							<option value="fade">Fade</option>
+							<option value="left">Left</option>
+							<option value="right">Right</option>
+							<option value="top">Top</option>
+							<option value="bottom">Bottom</option>
+						</select>
+					</div>
+
 
 				</div>
 
