@@ -26,14 +26,14 @@ You can pass the following props to the component.
 ```js
 
 <Slideshow
-	showIndex
-	showArrows
-	autoplay
-	slideInterval={2000}
-	slides=['1.jpg', '2.jpg']
-	effect={'fade'}
-	height={'100%'}
-	width={'100%'}
+  showIndex
+  showArrows
+  autoplay
+  slideInterval={2000}
+  slides=['1.jpg', '2.jpg']
+  effect={'fade'}
+  height={'100%'}
+  width={'100%'}
 />
 
 ```
