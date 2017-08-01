@@ -14,6 +14,7 @@ ReactDOM.render(
 		showIndex
 		showArrows
 		autoplay
+		defaultIndex={1}
 		effect={'fade'}
 		slideInterval={4000}
 		slides={slides}
