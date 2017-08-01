@@ -8,8 +8,8 @@ Following this enter `npm start` to run the code.
 
 You can pass the following props to the component.
 
-| Property | Description| Type |
-|----------|--------------------
+| Property | Description | Type |
+|----------|-------------|------|
 | showIndex | Show the index of the current slide | Boolean |
 | showArrows | Show arrows to navigate through the slides | Boolean |
 | autoplay | Select whether you want the slideshow to autoplay or not | Boolean |
