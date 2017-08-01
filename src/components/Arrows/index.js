@@ -1,7 +1,7 @@
 import React from 'react';
 import './Arrows.css';
 
-const Arrows = (props) => {
+const Arrows = function(props)  {
 
 	return (
 		<div className="arrows">

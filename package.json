@@ -1,19 +1,21 @@
 {
-	"name": "slideshow",
-	"version": "0.1.0",
-	"private": true,
-	"author": "Paul Fitzgerald",
-	"devDependencies": {
-		"react-scripts": "1.0.10"
-	},
-	"dependencies": {
-		"react": "^15.6.1",
-		"react-dom": "^15.6.1"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
-	}
+  "name": "slideshow",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Paul Fitzgerald",
+  "devDependencies": {
+    "react-build-lib": "0.0.2",
+    "react-scripts": "1.0.10"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+	"build:lib": "react-build-lib"
+  }
 }

@@ -197,7 +197,8 @@ input[type=checkbox]:checked + label .handle {
 	border-radius: 16px;
 	padding: 5px;
 	position: relative;
-	top: -8px;
+	top: -6px;
+	cursor: pointer;
 }
 
 input:focus,

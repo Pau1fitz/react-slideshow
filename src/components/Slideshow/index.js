@@ -13,16 +13,26 @@ class Slideshow extends Component {
 			showArrows: props.showArrows || false,
 			effect: props.effect || false,
 			slides: props.slides || [],
-			autoplay: props.autoplay || false
-
+			autoplay: props.autoplay || false,
+			enableKeyboard: props.enableKeyboard || true
 		};
 	}
 
-	componentDidMount() {
+	componentDidMount(e) {
 
 		if(this.state.autoplay)
 			this.runSlideShow();
+
+		if(this.state.enableKeyboard)
+			document.addEventListener('keydown', this.handleKeyboard);
+
+
 	}
+
+	handleKeyboard = (e) => {
+		e.keyCode === 37 ? this.decreaseCount() : e.keyCode === 39 ? this.increaseCount() : null;
+	}
+
 
 	runSlideShow = () => {
 		let intervalId = setInterval(this.autoSlideshow, this.state.slideInterval);
