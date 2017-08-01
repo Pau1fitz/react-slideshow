@@ -56,7 +56,7 @@ class Slideshow extends Component {
 
 	decreaseCount = () => {
 		this.state.autoplay ? this.restartSlideshow() : null;
-		
+
 		let currentSlide;
 		currentSlide = this.state.currentSlide === 0 ? this.props.slides.length - 1 : currentSlide = this.state.currentSlide - 1;
 		this.setState({
@@ -111,14 +111,20 @@ class Slideshow extends Component {
 
 				<div className="demo-controls">
 
+
+
+
 					<div onChange={this.toggleArrows}>
 						<span>Toggle Arrows</span>
-						<input type="checkbox"/>
+
+						<input type="checkbox" id="check" />
+						<label htmlFor="check"><div className="handle"></div></label>
 					</div>
 
 					<div onChange={this.toggleIndex}>
 						<span>Toggle Index</span>
-						<input type="checkbox"/>
+						<input type="checkbox" id="check-index" />
+						<label htmlFor="check-index"><div className="handle"></div></label>
 					</div>
 
 					<div onChange={this.toggleAutoplay}>
@@ -126,16 +132,16 @@ class Slideshow extends Component {
 						<input type="checkbox"/>
 					</div>
 
+					<span>Effect</span>
 					<select onChange={this.changeEffect} value={this.state.value}>
 						<option value="fade">Fade</option>
 						<option value="left">Left</option>
 						<option value="right">Right</option>
 						<option value="top">Top</option>
 						<option value="bottom">Bottom</option>
-				 </select>
+					</select>
 
 				</div>
-
 
 				<div style={{position:'absolute', height: this.props.height || '100%', width: this.props.width || '100%'}}>
 					<div className="slideshow-container">

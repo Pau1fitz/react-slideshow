@@ -1,6 +1,6 @@
 # React Slideshow
 
-Full screen React Slideshow component
+Customisable React Slideshow component.
 
 To run clone the repo and then run `npm install`.
 
@@ -18,7 +18,6 @@ You can pass the following props to the component.
 | effect |Choose the animation effect of your slideshow. Options include `fade`, `left`, `top`, `right` | String |
 | height | Choose the height of the slideshow. Example `height={'50px'}` or `height={'50%'}`| String |
 | width | Choose the width of the slideshow. Example `width={'50px'}` or `width={'50%'}`| String |
-
 
 
 ### Example
