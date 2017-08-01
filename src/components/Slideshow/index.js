@@ -25,8 +25,6 @@ class Slideshow extends Component {
 
 		if(this.state.enableKeyboard)
 			document.addEventListener('keydown', this.handleKeyboard);
-
-
 	}
 
 	handleKeyboard = (e) => {
