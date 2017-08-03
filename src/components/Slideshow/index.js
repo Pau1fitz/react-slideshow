@@ -56,6 +56,14 @@ class Slideshow extends Component {
 
 	increaseCount = () => {
 
+		this.state.effect === 'left' ?
+		this.setState({
+			effect: 'right'
+		}) : this.state.effect === 'bounce-left' ?
+		this.setState({
+			effect: 'bounce-right'
+		}) : null;
+
 		this.state.autoplay ? this.restartSlideshow() : null;
 		this.setState({
 			currentSlide: (this.state.currentSlide + 1) % this.state.slides.length
@@ -63,6 +71,14 @@ class Slideshow extends Component {
 	}
 
 	decreaseCount = () => {
+
+		this.state.effect === 'right' ? this.setState({
+			effect: 'left'
+		}) : this.state.effect === 'bounce-right' ?
+		this.setState({
+			effect: 'bounce-left'
+		}) : null;
+
 		this.state.autoplay ? this.restartSlideshow() : null;
 
 		let currentSlide;
@@ -169,16 +185,16 @@ class Slideshow extends Component {
 
 					<div className="demo-control">
 						<span>Effect</span>
-						<select className="select-effect" onChange={this.changeEffect} value={this.state.value}>
+						<select className="select-effect" onChange={this.changeEffect} value={this.state.effect}>
 							<option value="fade">Fade</option>
 							<option value="left">Left</option>
 							<option value="right">Right</option>
 							<option value="top">Top</option>
 							<option value="bottom">Bottom</option>
-							<option value="bounce">Bounce</option>
+							<option value="bounce-right">Bounce Right</option>
+							<option value="bounce-left">Bounce Left</option>
 						</select>
 					</div>
-
 
 				</div>
 
